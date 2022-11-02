@@ -1,0 +1,48 @@
+-- Create Table
+-- used to create a new table
+-- CREATE TABLE table_name (column1 datatype, column2 datatype, column3 datatype, ....);
+CREATE TABLE sales (
+	row_id int primary key,
+	customer_id varchar(32),
+	customer_name varchar(32)
+);
+
+-- Drop Table
+-- used to delete existing table
+-- DROP TABLE table_name
+DROP TABLE sales;
+
+-- Insert Into
+-- used to insert data into existing table
+-- INSERT INTO table_name(column1, column2, column3, ....) VALUES (value1, value2, value3, ....)
+INSERT INTO
+	sales(row_id, customer_id, customer_name)
+VALUES
+	(1, 20202121, 'Matt Gartska'),
+	(2, 20202122, 'Alex Rudinger'),
+	(3, 20202123, 'Chris Turner'),
+	(4, 20202124, 'Clay Aeschleman'),
+	(5, 20202125, 'Thomas Lang');
+
+-- Delete From
+-- used to deleted in existing table
+-- DELETE FROM table_name WHERE condition;
+DELETE FROM sales
+WHERE customer_name = 'Thomas Lang'
+
+-- Alter Table Add Column
+-- used to add column into existing table
+-- ALTER TABLE table_name ADD COLUMN newcolumn1 datatype, newcolumn2 datatype, newcolumn3 datatype, ....
+ALTER TABLE sales
+ADD COLUMN customer_age int;
+
+-- Alter Table Alter Column
+-- used to change the datatype column in existing table
+-- ALTER TABLE table_name ALTER COLUMN column_name TYPE datatype
+ALTER TABLE sales ALTER COLUMN customer_age TYPE varchar(32);
+
+-- Alter Table Drop Column
+-- used to add column into existing table
+-- ALTER TABLE table_name DROP COLUMN newcolumn1, newcolumn2, newcolumn3, ....
+ALTER TABLE sales
+DROP COLUMN customer_age;
