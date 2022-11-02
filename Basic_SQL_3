@@ -1,0 +1,74 @@
+/* In this section i used PostgreeSQL 15.0.1 as a RDMBS as well as this's the next part from Basic_SQL_2 */
+
+-- SELECT *
+-- used to show all columns
+SELECT *
+FROM orders
+
+-- BETWEEN
+-- used for data who has range
+-- number
+SELECT *
+FROM orders
+WHERE sales BETWEEN 100 and 200
+
+-- date
+SELECT *
+FROM orders
+WHERE order_date BETWEEN '2014-03-01' and '2014-04-01'
+
+-- LIKE
+-- used to find the pattern text from data
+-- 'text%' , '%text%', '%text'
+SELECT *
+FROM orders
+WHERE customer_name LIKE 'Joel%'
+
+SELECT *
+FROM orders
+WHERE customer_name LIKE '%Van%'
+
+SELECT DISTINCT customer_name
+FROM orders
+WHERE customer_name LIKE 'Z%'
+
+-- DISTINCT
+-- used to show the unique data
+SELECT DISTINCT category
+FROM orders
+
+-- INSERT
+-- used to input the data into a column
+-- to input the data we should to input the Primary key too
+INSERT INTO orders (row_id, customer_name, country)
+VALUES
+	(99999999, 'Apache Helicopter', 'United States')
+
+-- DELETE
+DELETE FROM orders
+WHERE customer_name = 'Apache Helicopter'
+
+-- ORDER BY
+-- used to sort the data
+-- ASCENDING (ASC) and DESCENDING (DESC)
+-- default sort is ASC
+
+SELECT *
+FROM orders
+ORDER BY 
+		customer_name ASC, 
+		city DESC
+
+-- LIMIT
+-- used to limit display data
+SELECT *
+FROM orders
+LIMIT 5
+
+-- Aliasing dan Prefix
+-- The function of both are same, to simplify
+-- Aliasing is to simplify column_name with AS or insert space
+-- Prefix is to simplify table_name with insert space
+SELECT row_id AS id
+FROM orders AS o
+
