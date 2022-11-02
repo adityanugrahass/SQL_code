@@ -1,0 +1,34 @@
+/* In this section i used PostgreeSQL 15.0.1 as a RDMBS */
+
+
+-- Before the dataset has upload, i have to create the table and column list that similar into the dataset
+-- Create table dan list column
+CREATE TABLE orders (
+	row_id int primary key,
+	order_id varchar(32),
+	order_date date,
+	ship_date date,
+	ship_mode varchar(32),
+	customer_id varchar(32),
+	customer_name varchar(32),
+	segment varchar(32),
+	country varchar(32),
+	city varchar,
+	state varchar(32),
+	postal_code varchar(32),
+	region varchar(32),
+	product_id varchar(32),
+	category varchar(32),
+	subcategory varchar(32),
+	product_name varchar(300),
+	sales float,
+	quantity int,
+	discount float,
+	profit float	
+);
+
+-- upload the dataset into Postgree
+COPY orders FROM 'D:\DATA ANALYST\Kumpulan Dataset\data_super_store.csv' WITH csv header
+
+-- change the datestyle caused by error after uploaded the dataset
+SET datestyle to MDY
