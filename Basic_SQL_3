@@ -1,4 +1,4 @@
-/* In this section i used PostgreeSQL 15.0.1 as a RDMBS as well as this's the next part from Basic_SQL_2 */
+/* In this section i used PostgreeSQL 15.0.1 as a RDMBS and also this's the next part from Basic_SQL_2 */
 
 -- SELECT *
 -- used to show all columns
