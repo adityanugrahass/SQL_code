@@ -1,0 +1,33 @@
+/* In this exercise i used PostgreeSQL 15.0.1 as a RDMBS with dataset from Basic_SQL_3 */
+
+SELECT *
+FROM orders
+
+-- Task 1
+-- Show a list of individual consumers who transacted in May 2014 and located in San Francisco
+SELECT DISTINCT customer_name
+FROM orders
+WHERE (order_date
+	BETWEEN '2014-03-31' AND '2014-05-01')
+	AND
+	city = 'San Francisco'
+
+-- Task 2
+-- Show 10 item transactions most profitable
+SELECT product_name, profit
+FROM orders
+ORDER BY profit DESC
+LIMIT 10
+
+-- Task 3
+-- Show 10 item transactions with the highest value
+SELECT product_name, sales
+FROM orders
+ORDER BY sales DESC
+LIMIT 10
+
+-- Show 5 list of customer name with highest purchase transactions
+SELECT customer_name, profit
+FROM orders
+ORDER BY profit DESC
+LIMIT 5
