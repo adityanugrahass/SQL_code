@@ -1,0 +1,74 @@
+/* In this section i used PostgreeSQL 15.0.1 as a RDMBS */
+
+SELECT *
+FROM orders o 
+
+---- AGGREGATE FUNCTION ----
+-- Used to return calculation on a set value in particular column into a single value
+
+-- COUNT
+-- used to return the total number of records or amount of data
+
+SELECT 
+	COUNT(order_id) con_order
+FROM 
+	orders o
+-- count with distinct
+-- return the total number unique (different) value 
+SELECT
+	COUNT(DISTINCT customer_id) con_cust
+FROM
+	orders o
+
+-- MIN and MAX
+-- MIN : return a minimum value 
+-- MAX : return a maximum value 
+SELECT
+	MIN(sales) min_sales,
+	MAX(sales) max_sales
+FROM orders o 
+
+-- SUM
+-- return the total sum of data
+SELECT
+	SUM(profit) sum_profit
+FROM
+	orders o
+
+-- AVG
+-- return the average of data
+SELECT
+	AVG(profit) avg_profit
+FROM
+	orders o 
+	
+---- GROUP BY ----
+-- used to grouping a data with aggregate function based on a particular column
+SELECT
+	city,
+	COUNT(DISTINCT customer_id) con_cust
+FROM
+	orders
+WHERE
+	segment = 'Consumer'
+GROUP BY
+	city
+ORDER BY
+	con_cust DESC
+	
+---- HAVING ----
+-- used to filtering the result of group by with aggregate function
+SELECT
+	customer_name,
+	COUNT(DISTINCT order_id) cons_order,
+	COUNT(DISTINCT quantity) quan_order
+FROM
+	orders
+WHERE
+	segment = 'Consumer'
+GROUP BY
+	customer_name
+HAVING
+	COUNT(DISTINCT quantity) >= 5
+ORDER BY
+	cons_order DESC, quan_order DESC, customer_name ASC
